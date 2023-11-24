@@ -1,0 +1,2 @@
+In this file we are going to write the python program for the snake game.
+So we are very aware of this writing th program. Because there are lot of mistakes are coming.
