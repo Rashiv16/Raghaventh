@@ -511,7 +511,10 @@ int main() {
     return 0;
 }*/
 
-#include<stdio.h>
+
+//Multiplication using Bitwise
+
+/*#include<stdio.h>
 void main()
 {
     int a,b,result;
@@ -525,4 +528,128 @@ void main()
         b=b>>1;
     }
     printf("%d\n",result);
+}*/
+
+//Double pointer
+
+/*#include<stdio.h>
+void main()
+{
+    int a=6;
+    int* p;
+    int **ptr;
+    p=&a;
+    ptr=&p;
+    printf("a=%d\n",*p);
+    printf("a=%d\n",**ptr);
+}*/
+
+//Break and Exit
+
+/*#include<stdio.h>
+void main()
+{
+    int a=5,i;
+    for(i=0;i<a;i++)
+    {
+        if(i==3)
+            break;
+        printf("%d\n",i);
+    }
+    printf("This is the last line printing\n");
+}*/
+
+/*#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+    int a=5,i;
+    for(i=0;i<a;i++)
+    {
+        if(i==3)
+            exit(0);
+        printf("%d\n",i);
+    }
+    printf("This is the last line printing\n");
+}*/
+
+//Print prime using function
+
+/*#include<stdio.h>
+void printprimes(int l_l, int u_l);
+int isprime(int num);
+void main()
+{
+    int l_l,u_l;
+    printf("Enter lower limit and upper limit: ");
+    scanf("%d %d",&l_l,&u_l);
+    printprimes(l_l,u_l);
+}
+
+void printprimes(int l_l, int u_l)
+{
+    printf("The prime number are: ");
+    while(l_l<=u_l)
+    {
+        if(isprime(l_l))
+            printf("%d\n",l_l);
+        l_l++;
+    }
+}
+
+int isprime(int num)
+{
+    for(int i=2;i<=num/2;i++)
+    {
+        if(num%i==0)
+            return 0;
+    }
+    return 1;
+}*/
+
+
+//Structure with pointer
+
+/*#include<stdio.h>
+struct person
+{
+    int age;
+    float weight;
+};
+void main()
+{
+    struct person person1;
+    struct person *pptr;
+    pptr=&person1;
+    printf("Enter age: ");
+    scanf("%d",&pptr->age);
+    printf("Enter weight: ");
+    scanf("%f",&pptr->weight);
+    printf("%d\n%f\n",pptr->age,pptr->weight);
+}*/
+
+/*#include<stdio.h>
+void main()
+{
+    int a[5]={1,2,3,4,5};
+    int *p=a;
+    for(int i=0;i<5;i++)
+        printf("%d\n",*p+i);
+}*/
+
+#include <stdint.h>
+
+uint32_t littleToBigEndian(const uint8_t* ptr) {
+    return (ptr[0] << 24) | (ptr[1] << 16) | (ptr[2] << 8) | ptr[3];
+}
+
+
+#include <stdio.h>
+
+int main() {
+    uint32_t littleValue = 0xDEADBEEF;
+    uint32_t bigValue = __builtin_bswap32(littleValue);
+    printf("Little-endian: 0x%X\n", littleValue);
+    printf("Big-endian: 0x%X\n", bigValue);
+    return 0;
 }
