@@ -637,7 +637,7 @@ void main()
         printf("%d\n",*p+i);
 }*/
 
-#include <stdint.h>
+/*#include <stdint.h>
 
 uint32_t littleToBigEndian(const uint8_t* ptr) {
     return (ptr[0] << 24) | (ptr[1] << 16) | (ptr[2] << 8) | ptr[3];
@@ -651,5 +651,352 @@ int main() {
     uint32_t bigValue = __builtin_bswap32(littleValue);
     printf("Little-endian: 0x%X\n", littleValue);
     printf("Big-endian: 0x%X\n", bigValue);
+    return 0;
+}*/
+
+
+//Structure
+
+/*#include<stdio.h>
+#pragma pack(1)
+struct stu
+{
+    int rollno;
+    float weight;
+    char sec;
+    double avg;
+};
+void main()
+{
+    struct stu a;
+    printf("%zu\n",sizeof(a));
+}*/
+
+
+//union
+
+/*#include<stdio.h>
+union stu
+{
+    int rollno;
+    float weight;
+    double avg;
+};
+void main()
+{
+    union stu b;
+    printf("%zu\n",sizeof(b));
+}*/
+
+//Bitfields
+
+/*#include <stdio.h>
+struct date {
+	int d : 5;
+	int m : 4;
+	int y;
+};
+int main()
+{
+	printf("Size of date is %lu bytes\n",
+		sizeof(struct date));
+	struct date dt = { 31, 12, 2014 };
+	printf("Date is %d/%d/%d", dt.d, dt.m, dt.y);
+	return 0;
+}*/
+
+
+//Count 1 and 0 bit in number
+
+/*#include<stdio.h>
+void main()
+{
+    int n, o_count=0, z_count=0, i;
+    printf("Enter the number: ");
+    scanf("%d",&n);
+    for(i=0;i<32;i++)
+    {
+        if(n&1)
+            o_count++;
+        else
+            z_count++;
+        n=n>>1;
+    }
+    printf("One count = %d and Zero count = %d\n",o_count,z_count);
+}*/
+
+//Swap the nibble
+
+/*#include<stdio.h>
+void main()
+{
+    int n=5;
+    n=(n<<4)|(n>>4);
+    printf("%d\n",n);
+}*/
+
+//Call by Value
+
+/*#include<stdio.h>
+void swap(int a, int b);
+void main()
+{
+    int a=6,b=8;
+    printf("Before swapping: a = %d and b = %d\n",a,b);
+    swap(a,b);
+    printf("In main function: a = %d and b = %d\n",a,b);
+}
+
+void swap(int a, int b)
+{
+    int temp=a;
+    a=b;
+    b=temp;
+    printf("After swapping: a = %d and b = %d\n",a,b);
+}*/
+
+//Call by Reference
+
+/*#include<stdio.h>
+void myswap(int *a, int *b);
+void main()
+{
+    int a=6, b=8;
+    printf("Before swapping: a = %d and b = %d\n",a,b);
+    myswap(&a,&b);
+    printf("In main function: a = %d and b = %d\n",a,b);
+}
+void myswap(int *a, int *b)
+{
+    int temp=*a;
+    *a=*b;
+    *b=temp;
+    printf("After swapping: a = %d and b = %d\n",*a,*b);
+}*/
+
+//Fibonacci within range:
+
+/*include<stdio.h>
+void myfibonacci(int l_r, int u_r);
+void main()
+{
+    int l_r,u_r;
+    printf("Enter lower and upper range: ");
+    scanf("%d %d",&l_r,&u_r);
+    myfibonacci(l_r,u_r);
+}
+void myfibonacci(int l_r, int u_r)
+{
+    int prev1=0, prev2=1, current=0;
+    if(prev1>=l_r && prev1<=u_r)
+        printf("%d\n",prev1);
+    while(current<=u_r)
+    {
+        current=prev1+prev2;
+        prev1=prev2;
+        prev2=current;
+        if(current>=l_r && current<=u_r)
+            printf("%d\n",current);
+    }
+}*/
+
+/*#include <stdio.h>
+int mystrlen(char *s) {
+    int i = 0;
+    while (*s) {
+        i++;
+        s++;
+    }
+    return i;
+}
+char *rev_substr(char *s, int len) {
+    int i = 0;
+    int j = len - 1;
+    char temp;
+    while (i < j) {
+        temp = s[i];
+        s[i] = s[j];
+        s[j] = temp;
+        i++;
+        j--;
+    }
+    return s;
+}
+char *rev_sentence(char *s) {
+    int i, j = 0;
+    int len = mystrlen(s);
+    rev_substr(s, len);  // Reverse the whole string
+    for (i = 0; i <= len; i++) {
+        // A word is delimited by a space or the null character
+        if (s[i] == ' ' || s[i] == '\0') {
+            rev_substr(s + j, i - j);  // Reverse each word
+            j = i + 1;
+        }
+    }
+    return s;
+}
+
+int main() {
+    char sentence[] = "I love you";
+    rev_sentence(sentence);
+    printf("%s\n", sentence);
+    return 0;
+}*/
+
+/*#include<stdio.h>
+char *rev_sentence(char *s);
+int mylen(char *s);
+char *rev_substr(char *s, int len);
+void main()
+{
+    char sentence[]="Hii Rashiv";
+    rev_sentence(sentence);
+    printf("%s\n",sentence);
+}
+char *rev_sentence(char *s)
+{
+    int i,j=0;
+    int len = mylen(s);
+    rev_substr(s,len);
+    for(i=0;i<=len;i++)
+    {
+        if(s[i]==' '||s[i]=='\0')
+        {
+            rev_substr(s+j, i-j);
+            j=i+1;
+        }
+    }
+    return s;
+}
+int mylen(char *s)
+{
+    int i=0;
+    while(*s)
+    {
+        i++;
+        s++;
+    }
+    return i;
+}
+
+char *rev_substr(char *s, int len)
+{
+    int i=0;
+    int j=len-1;
+    char temp;
+    while(i<j)
+    {
+        temp=s[i];
+        s[i]=s[j];
+        s[j]=temp;
+        i++;
+        j--;
+    }
+    return s;
+}*/
+
+/*#include <stdio.h>
+#include <stdlib.h>
+
+// Define the singly linked list node
+struct Node
+{
+    int data;
+    struct Node* next;
+};
+
+// Function to find the 4th last data
+int find4thLast(struct Node* head)
+{
+    struct Node* p1 = head;
+    struct Node* p2 = head;
+    // Move p2 ahead by 4 nodes
+    for (int i = 0; i < 4; ++i)
+    {
+        if (p2 == NULL)
+        {
+            printf("List has fewer than 4 nodes.\n");
+            exit(1);
+        }
+        p2 = p2->next;
+    }
+    // Move both pointers until p2 reaches the end
+    while (p2->next != NULL)
+    {
+        p1 = p1->next;
+        p2 = p2->next;
+    }
+    return p1->data;
+}
+// Example usage
+int main()
+{
+    // Create a sample linked list: 1 -> 2 -> 3 -> 4 -> 5
+    struct Node* head = (struct Node*)malloc(sizeof(struct Node));
+    head->data = 1;
+    head->next = NULL;
+    // Add more nodes (you can modify this part as needed)
+    // ...
+    // Find the 4th last data
+    int result = find4thLast(head);
+    printf("4th last data: %d\n", result);
+    // Clean up memory (free the linked list)
+    // ...
+    return 0;
+}*/
+
+// Sub using bitwise operaator:
+
+/*#include<stdio.h>
+void sub(int a, int b);
+void main()
+{
+    int a,b;
+    printf("Enter two numbers: ");
+    scanf("%d %d",&a,&b);
+    sub(a,b);
+}
+void sub(int a, int b)
+{
+    while(b!=0)
+    {
+        int borrow=(~a)&b;
+        a=a^b;
+        b=borrow<<1;
+    }
+    printf("Difference is %d\n",a);
+}*/
+
+/*#include<stdio.h>
+void main()
+{
+    unsigned int num = 1;
+    char *byte = (char *)&num;
+    if(*byte==1)
+        printf("Little-endian\n");
+    else
+        printf("Big-endian\n");
+}*/
+
+//Pointer to array
+
+/*#include<stdio.h>
+void main()
+{
+    int a[5]={1,2,3,4,5};
+    int (*p)[5]=&a;
+    for(int i=0;i<5;i++)
+        printf("%d\n",(*p)[i]);
+}*/
+
+#include <stdio.h>
+int main()
+{
+    int var1 = 10;
+    int var2 = 20;
+    int var3 = 30;
+    int* ptr_arr[3] = { &var1, &var2, &var3 };
+    for (int i = 0; i < 3; i++)
+        printf("Value of var%d: %d\tAddress: %p\n", i + 1, *ptr_arr[i], ptr_arr[i]);
     return 0;
 }
